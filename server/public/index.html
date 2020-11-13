@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,9 +9,62 @@
     <script src="./vendor/jquery.min.js"></script>
     <script src="./scripts/client.js"></script>
 </head>
+
 <body>
-    <header>
-        
-    </header>
+    <div class="container">
+        <header>
+            <h1>Server Side Calculator</h1>
+        </header>
+        <main>
+            <form>
+                <input type="number" id="numberOne">
+                <button id="add">+</button>
+                <button id="subtract">-</button>
+                <button id="multply">*</button>
+                <button id="divide">/</button>
+                <input type="number" id="numberTwo">
+                <button id="equals">=</button>
+                <button id="clear">C</button>
+            </form>
+            <div class="answer">
+                <h2>Answer here</h2>
+            </div>
+            <div>
+                <ul class="history">
+                    <li>4 - 6 + 7</li>
+                    <li>4 - 6 + 7</li>
+                    <li>4 - 6 + 7</li>
+                    <li>4 - 6 + 7</li>
+                </ul>
+                <div class="numpad-container">
+                    <div>
+                        <button class="numpad">1</button>
+                        <button class="numpad">2</button>
+                        <button class="numpad">3</button>
+                        <button class="numpad" id="add">+</button>
+                    </div>
+                    <div>
+                        <button class="numpad">4</button>
+                        <button class="numpad">5</button>
+                        <button class="numpad">6</button>
+                        <button class="numpad" id="subtract">-</button>
+                    </div>
+                    <div>
+                        <button class="numpad">7</button>
+                        <button class="numpad">8</button>
+                        <button class="numpad">9</button>
+                        <button class="numpad" id="multply">*</button>
+                    </div>
+                    <div>
+                        <button class="numpad">0</button>
+                        <button class="numpad">.</button>
+                        <button class="numpad">=</button>
+                        <button class="numpad" id="divide">/</button>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
 </body>
+
 </html>
