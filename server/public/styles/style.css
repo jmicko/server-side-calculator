@@ -23,13 +23,26 @@ header{
 
 .history{
     display: inline-block;
-    margin-top: 0;
+    float: right;
     background-color: #D291BC;
     max-width: max-content;
+    /* keep the right side padded */
     padding-inline-end: 1.6em;
-    padding-top: 1em;
-    padding-bottom: 1em;
+    /* keep top padded */
+    padding-top: 16px;
+    /* padding-bottom: 1em; */
     border-radius: .2em;
+    
+}
+
+.history-list{
+    /* display: inline-block; */
+    margin-top: 0;
+}
+
+h4{
+    padding-left: 1.4em;
+    margin: 0;
 }
 
 .numpad{

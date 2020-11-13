@@ -17,50 +17,49 @@
         </header>
         <main>
             <form>
-                <input type="number" id="numberOne">
-                <button id="add">+</button>
-                <button id="subtract">-</button>
-                <button id="multply">*</button>
-                <button id="divide">/</button>
-                <input type="number" id="numberTwo">
-                <button id="equals">=</button>
+                <!-- take one input feild. need to capture the string and calculate it -->
+                <input type="text" id="calculation-in">
                 <button id="clear">C</button>
             </form>
             <div class="answer">
                 <h2>Answer here</h2>
             </div>
             <div>
-                <ul class="history">
-                    <li>4 - 6 + 7</li>
-                    <li>4 - 6 + 7</li>
-                    <li>4 - 6 + 7</li>
-                    <li>4 - 6 + 7</li>
-                </ul>
                 <div class="numpad-container">
                     <div>
-                        <button class="numpad">1</button>
-                        <button class="numpad">2</button>
-                        <button class="numpad">3</button>
+                        <button class="numpad number">1</button>
+                        <button class="numpad number">2</button>
+                        <button class="numpad number">3</button>
                         <button class="numpad" id="add">+</button>
                     </div>
                     <div>
-                        <button class="numpad">4</button>
-                        <button class="numpad">5</button>
-                        <button class="numpad">6</button>
+                        <button class="numpad number">4</button>
+                        <button class="numpad number">5</button>
+                        <button class="numpad number">6</button>
                         <button class="numpad" id="subtract">-</button>
                     </div>
                     <div>
-                        <button class="numpad">7</button>
-                        <button class="numpad">8</button>
-                        <button class="numpad">9</button>
+                        <button class="numpad number">7</button>
+                        <button class="numpad number">8</button>
+                        <button class="numpad number">9</button>
                         <button class="numpad" id="multply">*</button>
                     </div>
                     <div>
-                        <button class="numpad">0</button>
+                        <button class="numpad number">0</button>
                         <button class="numpad">.</button>
                         <button class="numpad">=</button>
                         <button class="numpad" id="divide">/</button>
                     </div>
+                </div>
+                <div class="history">
+                    <h4>History</h4>
+                    <ul class="history-list">
+                        <li>4 - 6 + 7</li>
+                        <li>4 - 6 + 7</li>
+                        <li>4 - 6 + 7</li>
+                        <li>4 - 6 + 7</li>
+                    </ul>
+                    
                 </div>
             </div>
         </main>
@@ -68,3 +67,5 @@
 </body>
 
 </html>
+
+
