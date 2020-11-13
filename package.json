@@ -1,0 +1,24 @@
+{
+  "name": "server-side-calculator",
+  "version": "1.0.0",
+  "description": "calculator to demonstrate processing data on the server side",
+  "main": "index.js",
+  "scripts": {
+    "start": "node server/server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jmicko/server-side-calculator.git"
+  },
+  "author": "John Micko",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jmicko/server-side-calculator/issues"
+  },
+  "homepage": "https://github.com/jmicko/server-side-calculator#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "jquery": "^3.5.1"
+  }
+}
