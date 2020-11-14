@@ -18,8 +18,24 @@ app.use( express.static('server/public') );
 // tell express how to parse incoming data
 app.use( bodyParser.urlencoded( {extended: true} ) );
 
-// ----------these routs and data will vary for each assignment----------
 const calculationItems = [];
+
+// Tell server to listen on our port
+app.listen( port, () => {
+    console.log(`Server is listening on port ${port}...`);
+})
+
+
+// ----------these routs and data will vary for each assignment----------
+
+//  send information fromm the client into the server
+app.post('/calc', (req, res) => {
+    let calculatorData = req.body;
+    console.log('getting calculator data...', calculatorData);
+    calculationItems.unshift(calculatorData)
+    console.log('current calculatorItems array',calculatorData);
+    res.sendStatus(201); // 201 is created
+})
 
 //  send information fromm the server to the client
 app.get('/calc', (req, res) => {
@@ -27,18 +43,4 @@ app.get('/calc', (req, res) => {
     res.send(calculationItems);
 })
 
-//  send information fromm the client into the server
-app.post('/calc', (req, res) => {
-    let calculatorData = req.body;
-    console.log('getting calculator data...', calculatorData);
-    calculationItems.push(calculatorData)
-    res.sendStatus(200); // 200 is an OK status
-})
-
-
 // --------------------------end of our routes--------------------------
-
-// Tell server to listen on our port
-app.listen( port, () => {
-    console.log(`Server is listening on port ${port}...`);
-})

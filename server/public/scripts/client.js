@@ -1,7 +1,7 @@
 $(window).on("load", function () {
     console.log('hello from jq');
 
-    // add a listeneer to all buttons
+    // add a listener to all buttons
     $('.number').on('click', whichButton);
     $('#equals').on('click', handleCalulation);
     $('#clear').on('click', clearField);
@@ -13,8 +13,7 @@ function whichButton() {
     console.log(buttonId);
     $('#calculation-in').val(function () {
         return this.value + '' + buttonId;
-    }
-    )
+    })
 }
 
 function clearField(event) {
@@ -28,8 +27,9 @@ function handleCalulation(event) {
     // This is where you can add as many things as you want to the server
     // They will all get bundled up in the object and sent to the server as "data" in the ajax object
     let calculationString = {
-        calcString: $('#calculation-in').val(),
+        calcString: $('#calculation-in').val()
     }
+    $('#calculation-in').val('');
     console.log('handling message', calculationString);
     sendCalcStringToServer(calculationString);
 }
@@ -52,15 +52,20 @@ function sendCalcStringToServer(calc) {
 function getHistory(){
     $.ajax({
         method: 'GET',
-        url: '/message'
+        url: '/calc'
     })
         .then(function (response) {
-            console.log('Got messages', response);
+            console.log('Got history', response);
             renderHistory(response);
         })
 }
 
 function renderHistory(answer){
-    $('#answer').text(answer);
-    // $('#answer').append(`<p>${answer}: ${item.text}</p>`)
+    console.log('appending answer to answer h2:', answer);
+    $('#answer').text(answer[0].calcString);
+    for (let i = 0; i < answer.length; i++) {
+        const calculation = answer[i];
+        $('#history-list').append(`<p>${answer}: ${item.text}</p>`)
+        
+    }
 }
