@@ -14,7 +14,20 @@ function makeCalculation(input) {
 
 function pemdas(array) {
     console.log('we are running pemdas on this array:\n', array);
-    // loop
+    // make an array with the order of operations. 
+    const PEMDAS = [ '*', '/', '+', '-', ];
+    // loop through PEMDAS checking our input array for the apropriate operator
+    for (let i = 0; i < PEMDAS.length;) {
+        // set up our test function to compare array elements to an operator
+        const operator = (element) => element == PEMDAS[i];
+        // if the operator is found, perform the operation
+        if (array.findIndex(operator) != -1) {
+            console.log('i found this operator', PEMDAS[i]);
+            console.log('here is the position of the operator:', array.findIndex(operator));
+        }
+        i++
+    }
+    // then search and calculate for + and -, the same way as above
 
 }
 
