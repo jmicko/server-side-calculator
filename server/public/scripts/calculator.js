@@ -3,6 +3,23 @@ module.exports = makeCalculation;
 
 
 function makeCalculation(input) {
+    console.log('here is the input for the makeCalculation function', input);
+    const organizedArray = organize(input)
+    console.log('after we organize the array it looks like this:\n', organizedArray);
+    let answer = pemdas(organizedArray);
+
+}
+
+// 12+6-87
+
+function pemdas(array) {
+    console.log('we are running pemdas on this array:\n', array);
+    // loop
+
+}
+
+function organize(input) {
+    console.log('the input for the organize function is:\n', input);
     // set up an array to hold all our numbers, and our operators in an organized way
     const organizedArray = [];
     // set up a variable to keep track of the position in the array.
@@ -32,6 +49,5 @@ function makeCalculation(input) {
         }
         console.log('the new array is', organizedArray);
     }
+    return organizedArray;
 }
-
-// 12+6-87
