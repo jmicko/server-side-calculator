@@ -4,9 +4,12 @@ const express = require('express');
 
 // bring in body parser which will help us parse incoming data
 const bodyParser = require('body-parser');
+const makeCalculation = require('./public/scripts/calculator');
 
 // create an instance of the express webserver, we'll call it app
 const app = express();
+
+// bring in calculator function 
 
 // we'll use this port later, it's like a box number at the post office
 // where our server will get/send mail/messages
@@ -32,7 +35,7 @@ app.listen( port, () => {
 app.post('/calc', (req, res) => {
     let calculatorData = req.body;
     console.log('getting calculator data...', calculatorData);
-    calculationItems.unshift(calculatorData)
+    calculationItems.unshift(makeCalculation(calculatorData));
     console.log('current calculatorItems array',calculatorData);
     res.sendStatus(201); // 201 is created
 })

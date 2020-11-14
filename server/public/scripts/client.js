@@ -2,18 +2,34 @@ $(window).on("load", function () {
     console.log('hello from jq');
 
     // add a listener to all buttons
-    $('.number').on('click', whichButton);
-    $('#equals').on('click', handleCalulation);
+    $('.numpad').on('click', whichButton);
+    $('.equals').on('click', handleCalulation);
     $('#clear').on('click', clearField);
+    $('#backspace').on('click', backspace);
 })
+
+
+
 
 // function to figure out which button was pressed
 function whichButton() {
     let buttonId = $(this).text();
-    console.log(buttonId);
-    $('#calculation-in').val(function () {
-        return this.value + '' + buttonId;
-    })
+    if (buttonId != '=') {
+        console.log(buttonId);
+        $('#calculation-in').val(function () {
+            return this.value + '' + buttonId;
+        })
+    }
+}
+
+function backspace(event) {
+    event.preventDefault();
+    // grab the string from the input field
+    let string = $('#calculation-in').val();
+    // slice off the last character
+    string = string.slice(0, string.length - 1);
+    // change the value of the input to the sliced string
+    $('#calculation-in').val(string);
 }
 
 function clearField(event) {
@@ -24,6 +40,7 @@ function clearField(event) {
 
 function handleCalulation(event) {
     event.preventDefault();
+    console.log('trying to calculate');
     // This is where you can add as many things as you want to the server
     // They will all get bundled up in the object and sent to the server as "data" in the ajax object
     let calculationString = {
@@ -49,7 +66,7 @@ function sendCalcStringToServer(calc) {
     })
 }
 
-function getHistory(){
+function getHistory() {
     $.ajax({
         method: 'GET',
         url: '/calc'
@@ -60,12 +77,12 @@ function getHistory(){
         })
 }
 
-function renderHistory(answer){
+function renderHistory(answer) {
     console.log('appending answer to answer h2:', answer);
-    $('#answer').text(answer[0].calcString);
-    for (let i = 0; i < answer.length; i++) {
-        const calculation = answer[i];
-        $('#history-list').append(`<p>${answer}: ${item.text}</p>`)
-        
-    }
+    // $('#answer').text(answer[0].calcString);
+    // for (let i = 0; i < answer.length; i++) {
+    //     const calculation = answer[i];
+    //     $('#history-list').append(`<p>${answer}: ${item.text}</p>`)
+
+    // }
 }
