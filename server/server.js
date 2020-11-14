@@ -19,14 +19,15 @@ app.use( express.static('server/public') );
 app.use( bodyParser.urlencoded( {extended: true} ) );
 
 // ----------these routs and data will vary for each assignment----------
-const calculationItems = [2];
+const calculationItems = [];
 
-// route to GET the cats
+//  send information fromm the server to the client
 app.get('/calc', (req, res) => {
     console.log('Sending calculated data...');
     res.send(calculationItems);
 })
 
+//  send information fromm the client into the server
 app.post('/calc', (req, res) => {
     let calculatorData = req.body;
     console.log('getting calculator data...', calculatorData);
