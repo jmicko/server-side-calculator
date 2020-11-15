@@ -7,7 +7,10 @@ function makeCalculation(input) {
     const organizedArray = organize(input)
     console.log('after we organize the array it looks like this:\n', organizedArray);
     let answer = pemdas(organizedArray);
-
+    console.log('this is what we will return to the main server file', answer);
+    console.log('might also return this to the server?', input);
+    // return answer;
+    // experiment after this
 }
 
 // 12+6-87
@@ -15,20 +18,65 @@ function makeCalculation(input) {
 function pemdas(array) {
     console.log('we are running pemdas on this array:\n', array);
     // make an array with the order of operations. 
-    const PEMDAS = [ '*', '/', '+', '-', ];
+    const PEMDAS = ['*', '/', '+', '-',];
     // loop through PEMDAS checking our input array for the apropriate operator
     for (let i = 0; i < PEMDAS.length;) {
         // set up our test function to compare array elements to an operator
         const operator = (element) => element == PEMDAS[i];
-        // if the operator is found, perform the operation
-        if (array.findIndex(operator) != -1) {
+        // save the index of the operator to a variable
+        let operatorIndex = array.findIndex(operator);
+        // if the operator is found, perform the operation. It should take the numbers on either side
+        // of the operator, and perform that operation on them.
+        if (operatorIndex != -1) {
             console.log('i found this operator', PEMDAS[i]);
-            console.log('here is the position of the operator:', array.findIndex(operator));
+            console.log('here is the position of the operator:', operatorIndex);
+            // make a variable to store the result of the operation
+            let result;
+            // use a switch to decide the appropriate operation
+            switch (PEMDAS[i]) {
+                case '*':
+                    console.log('we in the * case');
+                    // perform the operation on the number to the left and right of the operator in the array
+                    result = Number(array[operatorIndex - 1]) * Number(array[operatorIndex + 1]);
+                    // remove both numbers and the operator, and replace with the result
+                    array.splice(operatorIndex - 1, 3, result);
+                    // need to go back 2 steps in the loop since 2 positions have been removed
+                    // meaning that the for loop will finish too quickly 
+                    i-=2;
+                    break;
+                // all cases work the same way functionally, with different operations 
+                case '/':
+                    console.log('we in the / case');
+                    result = Number(array[operatorIndex - 1]) / Number(array[operatorIndex + 1]);
+                    array.splice(operatorIndex - 1, 3, result);
+                    i-=2;
+                    break;
+
+                case '+':
+                    console.log('we in the + case');
+                    result = Number(array[operatorIndex - 1]) + Number(array[operatorIndex + 1]);
+                    array.splice(operatorIndex - 1, 3, result);
+                    i-=2;
+                    break;
+
+                case '-':
+                    console.log('we in the - case');
+                    result = Number(array[operatorIndex - 1]) - Number(array[operatorIndex + 1]);
+                    array.splice(operatorIndex - 1, 3, result);
+                    i-=2;
+                    break;
+
+                default:
+                    break;
+            }
+            console.log('the result of the switch calculation is', result);
+            console.log('array after the switch calculation:\n', array);
         }
         i++
     }
+    console.log('array after the for loop:\n', array);
     // then search and calculate for + and -, the same way as above
-
+    return array;
 }
 
 function organize(input) {
@@ -53,7 +101,7 @@ function organize(input) {
             organizedArray[position] = character;
             // move the position again to start concating the new number
             position++;
-        } else{
+        } else {
             if (organizedArray[position]) {
                 organizedArray[position] += character;
             } else {

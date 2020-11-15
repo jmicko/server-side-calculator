@@ -35,8 +35,10 @@ app.listen( port, () => {
 app.post('/calc', (req, res) => {
     let calculatorData = req.body;
     console.log('getting calculator data...', calculatorData);
-    calculationItems.unshift(makeCalculation(calculatorData));
-    console.log('current calculatorItems array',calculatorData);
+    let returnedCalc = (makeCalculation(calculatorData));
+    console.log('what is this', returnedCalc);
+    console.log('current calculationItems array', calculationItems);
+
     res.sendStatus(201); // 201 is created
 })
 
