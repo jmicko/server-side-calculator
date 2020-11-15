@@ -4,7 +4,7 @@ const express = require('express');
 
 // bring in body parser which will help us parse incoming data
 const bodyParser = require('body-parser');
-const makeCalculation = require('./public/scripts/calculator');
+const makeCalculation = require('./calculator');
 
 // create an instance of the express webserver, we'll call it app
 const app = express();

@@ -6,10 +6,13 @@ $(window).on("load", function () {
     $('.equals').on('click', handleCalulation);
     $('#clear').on('click', clearField);
     $('#backspace').on('click', backspace);
+    $('#history-list').on('click', 'li', reCalculate);
     getHistory(true);
 })
 
-
+function reCalculate(){
+    console.log($(this).text());
+}
 
 
 // function to figure out which button was pressed
