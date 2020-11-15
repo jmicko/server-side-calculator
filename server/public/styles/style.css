@@ -54,6 +54,7 @@ h4{
 .numpad-container{
     display: inline-block;
     border-radius: .2em;
+    margin-right: 1em;
     padding: 1em;
     max-width: max-content;
     background-color: rgb(133, 224, 240);

@@ -38,7 +38,7 @@ app.post('/calc', (req, res) => {
     let returnedCalc = (makeCalculation(calculatorData));
     console.log('what is this', returnedCalc);
     console.log('current calculationItems array', calculationItems);
-
+    calculationItems.unshift(returnedCalc);
     res.sendStatus(201); // 201 is created
 })
 

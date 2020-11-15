@@ -10,7 +10,12 @@ function makeCalculation(input) {
     console.log('this is what we will return to the main server file', answer);
     console.log('might also return this to the server?', input);
     // return answer;
-    // experiment after this
+    // experiment after this line
+    let answerPack = {
+        problem: input.calcString,
+        solution: answer[0]
+    }
+    return answerPack
 }
 
 // 12+6-87

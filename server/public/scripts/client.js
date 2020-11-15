@@ -6,6 +6,7 @@ $(window).on("load", function () {
     $('.equals').on('click', handleCalulation);
     $('#clear').on('click', clearField);
     $('#backspace').on('click', backspace);
+    getHistory(true);
 })
 
 
@@ -46,10 +47,13 @@ function handleCalulation(event) {
     let calculationString = {
         calcString: $('#calculation-in').val()
     }
-    $('#calculation-in').val('');
+
+    // $('#calculation-in').val('');
     console.log('handling message', calculationString);
     sendCalcStringToServer(calculationString);
 }
+
+// need to determine correct syntax before sending for calculation
 
 //  Take the package of data and send it to the server
 function sendCalcStringToServer(calc) {
@@ -61,12 +65,12 @@ function sendCalcStringToServer(calc) {
     }).then(function (response) {
         console.log('back from server');
         // clear inputs
-        $('#history-list').val('');
         getHistory();
     })
 }
 
-function getHistory() {
+function getHistory(pageLoad) {
+    $('#history-list').val('');
     $.ajax({
         method: 'GET',
         url: '/calc'
@@ -74,15 +78,32 @@ function getHistory() {
         .then(function (response) {
             console.log('Got history', response);
             renderHistory(response);
+            if (!pageLoad) {
+                renderAnswer(response);
+            }
         })
 }
 
 function renderHistory(answer) {
-    console.log('appending answer to answer h2:', answer);
-    // $('#answer').text(answer[0].calcString);
-    // for (let i = 0; i < answer.length; i++) {
-    //     const calculation = answer[i];
-    //     $('#history-list').append(`<p>${answer}: ${item.text}</p>`)
 
-    // }
+    $('#history-list').empty();
+    for (let i = 0; i < answer.length; i++) {
+        const calculation = answer[i];
+        if (calculation.solution != null) {
+            console.log(!isNaN(calculation.solution));
+            console.log(`that's not a number!`, calculation.solution);
+            $('#history-list').append(`<li>${calculation.problem} = ${calculation.solution}</li>`)
+        }
+
+    }
+}
+
+function renderAnswer(answer) {
+    console.log(answer);
+    if (answer[0].solution != null) {
+        $('#calculation-in').val('');
+        console.log('appending answer to answer h2:', answer[0]);
+        $('#answer').text(answer[0].solution);
+    }
+    
 }
