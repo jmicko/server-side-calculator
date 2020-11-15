@@ -104,6 +104,7 @@ function renderAnswer(answer) {
         $('#calculation-in').val('');
         console.log('appending answer to answer h2:', answer[0]);
         $('#answer').text(answer[0].solution);
+    } else {
+        $('#answer').text('');
     }
-    
 }
