@@ -15,7 +15,7 @@ $(window).on("load", function () {
 // function to figure out which button was pressed
 function whichButton() {
     let buttonId = $(this).text();
-    if (buttonId != '=') {
+    if (buttonId != '=' && buttonId != '←') {
         console.log(buttonId);
         $('#calculation-in').val(function () {
             return this.value + '' + buttonId;
