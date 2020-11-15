@@ -28,8 +28,8 @@ header{
 
 .history{
     display: flex;
+    flex-direction: column;
     background-color: #D291BC;
-    max-width: fit-content;
     /* keep the right side padded */
     padding-inline-end: 1.6em;
     /* keep top padded */
@@ -38,7 +38,8 @@ header{
     border-radius: .2em;
     word-break: break-word;
     flex-wrap: wrap;
-    width: auto;
+    width: 100%;
+    max-width: 300px;
 }
 
 .numpad-container{

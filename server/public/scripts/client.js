@@ -7,7 +7,7 @@ $(window).on("load", function () {
     $('#clear').on('click', clearField);
     $('#backspace').on('click', backspace);
     $('#history-list').on('click', 'li', reCalculate);
-    getHistory(true);
+    domUpdate(true);
 })
 
 function reCalculate(){
@@ -67,12 +67,12 @@ function sendCalcStringToServer(calc) {
         data: calc
     }).then(function (response) {
         console.log('back from server');
-        // clear inputs
-        getHistory();
+        // update all DOM text
+        domUpdate();
     })
 }
 
-function getHistory(pageLoad) {
+function domUpdate(pageLoad) {
     $('#history-list').val('');
     $.ajax({
         method: 'GET',
