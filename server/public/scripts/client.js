@@ -80,7 +80,9 @@ function domUpdate(pageLoad) {
     })
         .then(function (response) {
             console.log('Got history', response);
+            // rend the history list on the side
             renderHistory(response);
+            // if it's a refresh, we don't want to append an answer because we did not send a formula
             if (!pageLoad) {
                 renderAnswer(response);
             }
@@ -88,16 +90,16 @@ function domUpdate(pageLoad) {
 }
 
 function renderHistory(answer) {
-
+    // clear the history list
     $('#history-list').empty();
+    // loop through the history, one equation at a time
     for (let i = 0; i < answer.length; i++) {
         const calculation = answer[i];
+        // check if the answer was able to be calculated. If not, not not appeend it to the history list,
+        // and put the 
         if (calculation.solution != null) {
-            console.log(!isNaN(calculation.solution));
-            console.log(`that's not a number!`, calculation.solution);
             $('#history-list').append(`<li>${calculation.problem} = ${calculation.solution}</li>`)
         }
-
     }
 }
 
@@ -108,6 +110,7 @@ function renderAnswer(answer) {
         console.log('appending answer to answer h2:', answer[0]);
         $('#answer').text(answer[0].solution);
     } else {
-        $('#answer').text('');
+        // if there was an error, display syntax error instead, and 
+        $('#answer').text('Syntax error');
     }
 }
