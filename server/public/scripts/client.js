@@ -10,8 +10,28 @@ $(window).on("load", function () {
     domUpdate(true);
 })
 
-function reCalculate(){
+function reCalculate() {
     console.log($(this).text());
+    let repeat = $(this).text()
+    let j = true;
+    let repeated = [];
+    for (let i = 0; j; i++) {
+        const character = repeat[i];
+        if (character == '=') {
+            break
+        } else {
+            if (repeated) {
+                // if something is there, we concat
+                repeated += character;
+            } else {
+                // if nothing is there, we creat the new i.
+                repeated = character;
+            }
+        }
+        console.log('the new array is', repeated);
+    }
+    // return the new array to the parent function so it fcan be passed on to be calculated
+    $('#calculation-in').val(repeated);
 }
 
 
