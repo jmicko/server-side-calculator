@@ -17,7 +17,7 @@ function reCalculate() {
     let repeated = [];
     for (let i = 0; j; i++) {
         const character = repeat[i];
-        if (character == '=') {
+        if (character == ' ') {
             break
         } else {
             if (repeated) {
